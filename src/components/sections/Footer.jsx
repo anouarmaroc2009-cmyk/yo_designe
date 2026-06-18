@@ -14,10 +14,7 @@ const fadeUp = {
 };
 
 const links = [
-  { label: "Instagram", href: "#" },
-  { label: "Behance", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Dribbble", href: "#" },
+  { label: "Instagram", href: "https://instagram.com/yo_design_officiel" },
 ];
 
 export default function Footer() {
@@ -75,14 +72,17 @@ export default function Footer() {
             </h4>
             <Magnetic strength={0.25}>
               <a
-                href="mailto:hello@yodesign.studio"
+                href="mailto:yasimo.design.offi@gmail.com"
                 className="group inline-flex items-center gap-3 font-serif text-2xl italic leading-tight text-white transition-colors duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-brass"
               >
-                hello@yodesign.studio
+                yasimo.design.offi@gmail.com
                 <span className="inline-block font-sans text-sm not-italic transition-transform duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5">
                   &rarr;
                 </span>
               </a>
+              <p className="mt-5 text-sm tracking-[0.02em] text-white/50">
+                @yo_design_officiel
+              </p>
             </Magnetic>
             <p className="mt-4 text-sm tracking-[0.02em] text-white/30">
               Casablanca / Paris / Remote
