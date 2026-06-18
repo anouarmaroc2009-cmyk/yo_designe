@@ -61,9 +61,10 @@ export default function Work() {
             >
               <Magnetic strength={0.12}>
                 <a href="#" className="block h-full">
-                  <div
-                    className="aspect-[5/4] w-full bg-stone bg-cover bg-center lg:aspect-auto lg:h-full"
-                    style={{ backgroundImage: `url(${p.src})` }}
+                  <img
+                    src={p.src}
+                    alt=""
+                    className="aspect-[5/4] w-full object-cover lg:aspect-auto lg:h-full"
                   />
 
                   <div className="pointer-events-none absolute inset-0 opacity-0 transition-all duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100">
