@@ -1,113 +1,114 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import RevealText from "./RevealText";
 
-const fadeUp = {
-  hidden: { y: 48, opacity: 0 },
-  visible: (i = 0) => ({
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 1.2,
-      delay: i * 0.2,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  }),
-};
+const defaultEase = [0.16, 1, 0.3, 1];
 
 const projects = [
   {
     title: "Maison Noire",
-    category: "Brand Identity",
-    src: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&q=80",
-    cols: "lg:col-span-8 lg:row-span-2",
+    category: "Brand Identity · 2025",
+    src: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=900&q=85",
+    cols: "lg:col-span-7 lg:row-span-2",
   },
   {
     title: "Atelier Loam",
-    category: "Art Direction",
-    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
-    cols: "lg:col-span-4",
-  },
-  {
-    title: "Kōri Studio",
-    category: "Spatial Design",
-    src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
+    category: "Art Direction · 2025",
+    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=85",
     cols: "lg:col-span-5",
   },
   {
+    title: "Kōri Studio",
+    category: "Spatial Design · 2024",
+    src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700&q=85",
+    cols: "lg:col-span-5 lg:col-start-1",
+  },
+  {
     title: "Sienna Estate",
-    category: "Editorial",
-    src: "https://images.unsplash.com/photo-1600585153490-76fb20a32601?w=600&q=80",
+    category: "Editorial · 2024",
+    src: "https://images.unsplash.com/photo-1600585153490-76fb20a32601?w=700&q=85",
     cols: "lg:col-span-7",
   },
 ];
 
 export default function Work() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-5%" });
+  const labelRef = useRef(null);
+  const labelInView = useInView(labelRef, { once: true, margin: "-10%" });
 
   return (
-    <section id="work" ref={ref} className="px-6 py-32 lg:px-16">
+    <section id="work" className="px-8 pb-48 pt-28 lg:px-20 xl:px-28">
       <div className="mx-auto max-w-7xl">
+        {/* Section intro — generous breathing room */}
         <motion.div
+          ref={labelRef}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.12 } },
-          }}
-          className="mb-20"
+          animate={labelInView ? "visible" : "hidden"}
+          className="mb-24 max-w-3xl space-y-6"
         >
           <motion.span
-            variants={fadeUp}
-            className="mb-4 block text-xs font-medium tracking-[0.25em] uppercase text-warm-gray"
+            initial={{ opacity: 0, x: -20 }}
+            animate={labelInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: defaultEase }}
+            className="block text-[11px] font-medium tracking-[0.3em] uppercase text-warm"
           >
             Selected Projects
           </motion.span>
-          <motion.h2
-            variants={fadeUp}
-            className="font-serif text-4xl leading-tight sm:text-5xl lg:text-6xl"
+
+          <RevealText
+            as="h2"
+            delay={0.15}
+            stagger={0.05}
+            wordSpace="mr-[0.25em]"
+            className="font-serif text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] tracking-tight"
           >
             Work that lingers.
-          </motion.h2>
+          </RevealText>
+
           <motion.p
-            variants={fadeUp}
-            custom={1}
-            className="mt-4 max-w-lg text-warm-gray"
+            initial={{ opacity: 0, y: 24 }}
+            animate={labelInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, delay: 0.6, ease: defaultEase }}
+            className="max-w-md text-sm leading-[1.8] tracking-[0.02em] text-warm"
           >
-            Every project is a collaboration rooted in craft, curiosity, and
-            an obsession with the details that most overlook.
+            Every project is a collaboration rooted in craft, curiosity, and an
+            obsession with the details that most overlook.
           </motion.p>
         </motion.div>
 
-        {/* Asymmetric editorial grid */}
-        <div className="grid gap-6 lg:grid-cols-12 lg:grid-rows-[auto_auto]">
+        {/* Magazine-style asymmetric grid */}
+        <div className="grid gap-8 lg:grid-cols-12">
           {projects.map((p, i) => (
             <motion.a
               key={p.title}
               href="#"
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-5%" }}
+              viewport={{ once: true, margin: "-8%" }}
               transition={{
-                duration: 1,
+                duration: 1.2,
                 delay: i * 0.15,
-                ease: [0.16, 1, 0.3, 1],
+                ease: defaultEase,
               }}
-              className={`group relative overflow-hidden ${p.cols} col-span-12`}
+              className={`group relative col-span-12 block overflow-hidden ${p.cols}`}
             >
-              <div className="aspect-[4/3] w-full overflow-hidden lg:aspect-auto lg:h-full">
+              <div className="aspect-[5/4] w-full overflow-hidden lg:aspect-auto lg:h-full">
                 <img
                   src={p.src}
                   alt={p.title}
-                  className="h-full w-full object-cover transition-all duration-[1s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                   loading="lazy"
+                  className="h-full w-full object-cover transition-all duration-[1.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
                 />
               </div>
 
-              {/* Overlay on hover */}
-              <div className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-charcoal/40 via-transparent to-transparent p-6 opacity-0 transition-opacity duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100">
-                <h3 className="font-serif text-2xl text-white">{p.title}</h3>
-                <p className="mt-1 text-sm text-white/70">{p.category}</p>
+              {/* Slow-reveal overlay label */}
+              <div className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-charcoal/[0.55] via-transparent to-transparent p-8 opacity-0 transition-all duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100">
+                <span className="mb-1 inline-block h-px w-12 bg-brass" />
+                <h3 className="font-serif text-3xl leading-tight text-white">
+                  {p.title}
+                </h3>
+                <p className="mt-1.5 text-[11px] tracking-[0.15em] uppercase text-white/60">
+                  {p.category}
+                </p>
               </div>
             </motion.a>
           ))}

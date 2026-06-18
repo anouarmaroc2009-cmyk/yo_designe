@@ -1,137 +1,86 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import RevealText from "./RevealText";
 
-const fadeUp = {
-  hidden: { y: 48, opacity: 0 },
-  visible: (i = 0) => ({
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 1.2,
-      delay: i * 0.2,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  }),
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.15, delayChildren: 0.3 },
-  },
-};
-
-const projects = [
-  {
-    title: "Maison Noire",
-    category: "Brand Identity",
-    src: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&q=80",
-    cols: "lg:col-span-8 lg:row-span-2",
-  },
-  {
-    title: "Atelier Loam",
-    category: "Art Direction",
-    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
-    cols: "lg:col-span-4",
-  },
-  {
-    title: "Kōri Studio",
-    category: "Spatial Design",
-    src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
-    cols: "lg:col-span-5",
-  },
-  {
-    title: "Sienna Estate",
-    category: "Editorial",
-    src: "https://images.unsplash.com/photo-1600585153490-76fb20a32601?w=600&q=80",
-    cols: "lg:col-span-7",
-  },
-];
+const defaultEase = [0.16, 1, 0.3, 1];
 
 export default function Hero() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-10%" });
 
   return (
-    <header ref={ref} className="relative min-h-screen px-6 pt-32 pb-24 lg:px-16">
-      <motion.div
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={staggerContainer}
-        className="mx-auto max-w-7xl"
+    <header
+      ref={ref}
+      className="relative min-h-screen overflow-hidden px-8 pt-36 pb-28 lg:px-20 xl:px-28"
+    >
+      {/* off-grid decorative numeral */}
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ duration: 2.4, delay: 1.5, ease: defaultEase }}
+        className="pointer-events-none absolute -top-28 right-0 select-none text-[32rem] leading-none text-charcoal/[0.025]"
+        style={{ fontFamily: "Bodoni Moda", fontStyle: "italic" }}
       >
-        <div className="mb-6 flex items-center gap-3">
-          <motion.span
-            variants={fadeUp}
-            custom={0}
-            className="inline-block h-px w-12 bg-brass"
-          />
-          <motion.span
-            variants={fadeUp}
-            custom={0}
-            className="text-xs font-medium tracking-[0.25em] uppercase text-warm-gray"
-          >
-            Design Studio
-          </motion.span>
-        </div>
+        y
+      </motion.span>
 
-        <h1 className="max-w-5xl font-serif text-5xl leading-[1.08] tracking-tight sm:text-7xl lg:text-8xl">
-          <motion.span
-            variants={fadeUp}
-            custom={1}
-            className="block"
-          >
-            We shape space,
-          </motion.span>
-          <motion.span
-            variants={fadeUp}
-            custom={2}
-            className="block italic text-brass"
-          >
-            narrative & form.
-          </motion.span>
-        </h1>
+      <div className="relative mx-auto max-w-7xl">
+        {/* Eyebrow */}
+        <motion.div
+          initial={{ opacity: 0, x: -24 }}
+          animate={isInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 1, delay: 0.2, ease: defaultEase }}
+          className="mb-10 flex items-center gap-5"
+        >
+          <span className="inline-block h-px w-16 bg-brass" />
+          <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-warm">
+            Casablanca / Paris
+          </span>
+        </motion.div>
 
+        {/* Main heading — word-stagger reveal */}
+        <RevealText
+          as="h1"
+          delay={0.5}
+          stagger={0.06}
+          wordSpace="mr-[0.3em]"
+          className="max-w-6xl font-serif text-[clamp(3rem,10vw,8rem)] leading-[0.92] tracking-tight text-charcoal"
+        >
+          We shape space, narrative & form.
+        </RevealText>
+
+        {/* Body — delayed line reveal */}
         <motion.p
-          variants={fadeUp}
-          custom={3}
-          className="mt-10 max-w-xl text-lg leading-relaxed text-warm-gray"
+          initial={{ opacity: 0, y: 32 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1.2, delay: 1.6, ease: defaultEase }}
+          className="mt-14 max-w-xl text-base leading-[1.7] tracking-[0.04em] text-warm sm:text-lg"
         >
           A boutique creative studio crafting deliberate brand worlds,
           editorial identities, and spatial stories for the discerning few.
         </motion.p>
 
+        {/* CTA */}
         <motion.div
-          variants={fadeUp}
-          custom={4}
-          className="mt-16"
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1, delay: 2, ease: defaultEase }}
+          className="mt-20"
         >
           <a
             href="#work"
-            className="group relative inline-flex items-center gap-3 text-sm font-medium tracking-[0.15em] uppercase"
+            className="group relative inline-flex items-center gap-4 text-xs font-medium tracking-[0.2em] uppercase"
           >
             <span className="relative">
               View selected work
-              <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-charcoal transition-transform duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
+              <span className="absolute -bottom-1.5 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-charcoal transition-transform duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
             </span>
-            <span className="inline-block transition-transform duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-2">
+            <span className="inline-block font-serif text-lg italic transition-transform duration-[0.8s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-2">
               &rarr;
             </span>
           </a>
         </motion.div>
-      </motion.div>
-
-      {/* Decorative off-grid element */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.8, delay: 2, ease: [0.16, 1, 0.3, 1] }}
-        className="pointer-events-none absolute -top-12 right-0 hidden select-none lg:block"
-      >
-        <span className="font-serif text-[28rem] leading-none text-charcoal/[0.03]">
-          y
-        </span>
-      </motion.div>
+      </div>
     </header>
   );
 }
