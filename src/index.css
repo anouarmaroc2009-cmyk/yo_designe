@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --color-charcoal: #1c1917;
+  --color-stone: #f5f3ee;
+  --color-warm-gray: #78716c;
+  --color-brass: #a8845a;
+  --color-brass-light: #d4c4b0;
+  --color-border: #e7e2da;
+  --color-white-warm: #fafaf8;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-stone font-sans text-charcoal antialiased;
+  }
+}
