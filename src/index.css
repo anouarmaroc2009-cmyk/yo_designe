@@ -1,29 +1,5 @@
 @import "tailwindcss";
 
-/* ── Grain / Noise Overlay ── */
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    @apply bg-ivory font-sans text-charcoal antialiased;
-  }
-
-  /* hide default cursor */
-  * {
-    cursor: none;
-  }
-
-  a,
-  button,
-  [role="button"],
-  input,
-  textarea {
-    cursor: none;
-  }
-}
-
 @theme {
   --font-serif: "Bodoni Moda", Georgia, serif;
   --font-sans: "DM Sans", system-ui, sans-serif;
@@ -40,33 +16,86 @@
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Grain texture overlay ── */
-.noise::before {
+@layer base {
+  html.lenis {
+    scroll-behavior: auto;
+  }
+
+  html.lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+
+  html.lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-ivory font-sans text-charcoal antialiased;
+  }
+
+  * {
+    cursor: none;
+  }
+
+  a,
+  button,
+  [role="button"],
+  input,
+  textarea {
+    cursor: none;
+  }
+}
+
+/* ── Refined noise grain (CSS-only, no canvas) ── */
+.grain::after {
   content: "";
   position: fixed;
   inset: -50%;
-  z-index: 9999;
+  z-index: 9998;
   pointer-events: none;
-  opacity: 0.35;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.25;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
-  background-size: 180px 180px;
-  animation: grain 0.6s steps(4) infinite;
+  background-size: 256px 256px;
+  animation: grainShift 0.8s steps(3) infinite;
 }
 
-@keyframes grain {
+@keyframes grainShift {
   0%,
   100% {
     transform: translate(0, 0);
   }
-  25% {
-    transform: translate(-5%, -5%);
+  33% {
+    transform: translate(-3%, 2%);
   }
-  50% {
-    transform: translate(5%, 2%);
+  66% {
+    transform: translate(3%, -1%);
   }
-  75% {
-    transform: translate(-2%, 5%);
-  }
+}
+
+/* ── Glassmorphism ── */
+.glass {
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  background: rgba(247, 245, 240, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  backdrop-filter: blur(20px) saturate(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(1.1);
+  background: rgba(26, 22, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Soft glow ── */
+.glow-brass {
+  box-shadow: 0 0 40px 4px rgba(196, 149, 106, 0.08),
+    0 0 80px 12px rgba(196, 149, 106, 0.04);
+}
+
+.glow-charcoal {
+  box-shadow: 0 0 40px 4px rgba(26, 22, 20, 0.06),
+    0 0 80px 12px rgba(26, 22, 20, 0.03);
 }

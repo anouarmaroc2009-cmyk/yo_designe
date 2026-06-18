@@ -1,14 +1,15 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Magnetic from "../ui/Magnetic";
 
-const defaultEase = [0.16, 1, 0.3, 1];
+const ease = [0.16, 1, 0.3, 1];
 
 const fadeUp = {
   hidden: { y: 40, opacity: 0 },
   visible: (i = 0) => ({
     y: 0,
     opacity: 1,
-    transition: { duration: 1.2, delay: i * 0.15, ease: defaultEase },
+    transition: { duration: 1.2, delay: i * 0.12, ease },
   }),
 };
 
@@ -24,13 +25,18 @@ export default function Footer() {
   const isInView = useInView(ref, { once: true, margin: "-10%" });
 
   return (
-    <footer ref={ref} className="bg-charcoal px-8 pt-32 pb-20 text-white lg:px-20 xl:px-28">
+    <footer
+      ref={ref}
+      className="relative bg-charcoal px-8 pt-36 pb-20 text-white lg:px-20 xl:px-28"
+    >
+      {/* Top glow */}
+      <div className="glow-charcoal pointer-events-none absolute -top-40 left-1/2 h-80 w-3/4 -translate-x-1/2 rounded-full" />
+
       <motion.div
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="mx-auto max-w-7xl"
+        className="relative mx-auto max-w-7xl"
       >
-        {/* Top row — generous split */}
         <div className="grid gap-20 lg:grid-cols-12">
           <motion.div variants={fadeUp} custom={0} className="lg:col-span-5">
             <span className="font-serif text-4xl italic leading-none tracking-tight">
@@ -46,16 +52,18 @@ export default function Footer() {
             <h4 className="mb-8 text-[11px] font-medium tracking-[0.25em] uppercase text-brass-light/40">
               Social
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-5">
               {links.map((l) => (
                 <li key={l.label}>
-                  <a
-                    href={l.href}
-                    className="group inline-flex items-center gap-3 text-sm text-white/50 transition-colors duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-white"
-                  >
-                    <span className="inline-block h-px w-6 bg-white/10 transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-12 group-hover:bg-brass" />
-                    {l.label}
-                  </a>
+                  <Magnetic strength={0.3}>
+                    <a
+                      href={l.href}
+                      className="group inline-flex items-center gap-3 text-sm text-white/50 transition-colors duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-white"
+                    >
+                      <span className="inline-block h-px w-6 bg-white/10 transition-all duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-12 group-hover:bg-brass" />
+                      {l.label}
+                    </a>
+                  </Magnetic>
                 </li>
               ))}
             </ul>
@@ -65,26 +73,27 @@ export default function Footer() {
             <h4 className="mb-8 text-[11px] font-medium tracking-[0.25em] uppercase text-brass-light/40">
               Contact
             </h4>
-            <a
-              href="mailto:hello@yodesign.studio"
-              className="group inline-flex items-center gap-3 font-serif text-2xl italic leading-tight text-white transition-colors duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-brass"
-            >
-              hello@yodesign.studio
-              <span className="inline-block font-sans text-sm not-italic transition-transform duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5">
-                &rarr;
-              </span>
-            </a>
+            <Magnetic strength={0.25}>
+              <a
+                href="mailto:hello@yodesign.studio"
+                className="group inline-flex items-center gap-3 font-serif text-2xl italic leading-tight text-white transition-colors duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-brass"
+              >
+                hello@yodesign.studio
+                <span className="inline-block font-sans text-sm not-italic transition-transform duration-[0.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5">
+                  &rarr;
+                </span>
+              </a>
+            </Magnetic>
             <p className="mt-4 text-sm tracking-[0.02em] text-white/30">
               Casablanca / Paris / Remote
             </p>
           </motion.div>
         </div>
 
-        {/* Bottom bar */}
         <motion.div
           variants={fadeUp}
           custom={3}
-          className="mt-32 flex flex-col items-start justify-between gap-5 border-t border-white/[0.06] pt-10 text-xs text-white/25 sm:flex-row sm:items-center"
+          className="mt-36 flex flex-col items-start justify-between gap-5 border-t border-white/[0.06] pt-10 text-xs text-white/25 sm:flex-row sm:items-center"
         >
           <p>&copy; {new Date().getFullYear()} yo_design. All rights reserved.</p>
           <p className="tracking-[0.1em]">Crafted with intention.</p>
