@@ -95,8 +95,7 @@ export default function Footer() {
           custom={3}
           className="mt-36 flex flex-col items-start justify-between gap-5 border-t border-white/[0.06] pt-10 text-xs text-white/25 sm:flex-row sm:items-center"
         >
-          <p>&copy; {new Date().getFullYear()} yo_design. All rights reserved.</p>
-          <p className="tracking-[0.1em]">Made with precision.</p>
+          <p>made by YourWebsite.Ma-anvar</p>
         </motion.div>
       </motion.div>
     </footer>
