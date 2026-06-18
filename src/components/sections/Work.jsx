@@ -1,16 +1,15 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import ParallaxImage from "../ui/ParallaxImage";
 import Magnetic from "../ui/Magnetic";
 import SectionTransition from "../layout/SectionTransition";
 
 const ease = [0.16, 1, 0.3, 1];
 
 const projects = [
-  { src: "/images/project-1.jpg", cols: "lg:col-span-7 lg:row-span-2", speed: 0.3 },
-  { src: "/images/project-2.jpg", cols: "lg:col-span-5", speed: 0.5 },
-  { src: "/images/project-3.jpg", cols: "lg:col-span-5 lg:col-start-1", speed: 0.45 },
-  { src: "/images/project-4.jpg", cols: "lg:col-span-7", speed: 0.35 },
+  { cols: "lg:col-span-7 lg:row-span-2" },
+  { cols: "lg:col-span-5" },
+  { cols: "lg:col-span-5 lg:col-start-1" },
+  { cols: "lg:col-span-7" },
 ];
 
 export default function Work() {
@@ -61,14 +60,7 @@ export default function Work() {
             >
               <Magnetic strength={0.12}>
                 <a href="#" className="block">
-                  <div className="aspect-[5/4] w-full overflow-hidden lg:aspect-auto lg:h-full">
-                    <ParallaxImage
-                      src={p.src}
-                      alt=""
-                      speed={p.speed}
-                      className="h-full w-full transition-all duration-[1.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
-                    />
-                  </div>
+                  <div className="aspect-[5/4] w-full bg-stone lg:aspect-auto lg:h-full" />
 
                   {/* Glass overlay on hover */}
                   <div className="pointer-events-none absolute inset-0 opacity-0 transition-all duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100">
