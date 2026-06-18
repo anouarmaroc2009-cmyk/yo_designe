@@ -46,8 +46,7 @@ export default function Work() {
             transition={{ duration: 1, delay: 0.45, ease }}
             className="mt-6 max-w-md text-sm leading-[1.8] tracking-[0.02em] text-warm"
           >
-            Tailored solutions, not templates. Each project is a precision
-            instrument, calibrated to its purpose.
+made by YourWebsite.Ma-anvar
           </motion.p>
         </div>
 
