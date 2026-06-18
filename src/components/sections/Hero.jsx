@@ -51,7 +51,7 @@ export default function Hero() {
         className="glass mt-12 max-w-lg space-y-8 rounded-2xl px-8 py-8 text-center"
       >
         <p className="text-sm leading-[1.8] tracking-[0.04em] text-warm lg:text-base">
-          A boutique creative studio — shaping space, narrative & form.
+          Precision. Craft. Digital presence.
         </p>
 
         <Magnetic strength={0.35}>

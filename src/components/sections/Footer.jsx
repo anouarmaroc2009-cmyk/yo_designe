@@ -43,8 +43,8 @@ export default function Footer() {
               yo_design
             </span>
             <p className="mt-6 max-w-xs text-sm leading-[1.8] tracking-[0.02em] text-brass-light/50">
-              A boutique creative studio. We craft identity, space, and
-              narrative for those who refuse the ordinary.
+              Bespoke digital architecture. Precision at every scale.
+              Design driven by data, refined by craft.
             </p>
           </motion.div>
 
@@ -96,7 +96,7 @@ export default function Footer() {
           className="mt-36 flex flex-col items-start justify-between gap-5 border-t border-white/[0.06] pt-10 text-xs text-white/25 sm:flex-row sm:items-center"
         >
           <p>&copy; {new Date().getFullYear()} yo_design. All rights reserved.</p>
-          <p className="tracking-[0.1em]">Crafted with intention.</p>
+          <p className="tracking-[0.1em]">Made with precision.</p>
         </motion.div>
       </motion.div>
     </footer>

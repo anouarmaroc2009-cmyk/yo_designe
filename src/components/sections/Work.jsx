@@ -9,28 +9,28 @@ const ease = [0.16, 1, 0.3, 1];
 const projects = [
   {
     title: "Maison Noire",
-    category: "Brand Identity · 2025",
+    category: "Brand Architecture",
     src: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=900&q=85",
     cols: "lg:col-span-7 lg:row-span-2",
     parallaxSpeed: 0.3,
   },
   {
     title: "Atelier Loam",
-    category: "Art Direction · 2025",
+    category: "Visual Strategy",
     src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=85",
     cols: "lg:col-span-5",
     parallaxSpeed: 0.5,
   },
   {
     title: "Kōri Studio",
-    category: "Spatial Design · 2024",
+    category: "Environmental Narrative",
     src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700&q=85",
     cols: "lg:col-span-5 lg:col-start-1",
     parallaxSpeed: 0.45,
   },
   {
     title: "Sienna Estate",
-    category: "Editorial · 2024",
+    category: "Content Ecosystem",
     src: "https://images.unsplash.com/photo-1600585153490-76fb20a32601?w=700&q=85",
     cols: "lg:col-span-7",
     parallaxSpeed: 0.35,
@@ -52,7 +52,7 @@ export default function Work() {
             transition={{ duration: 0.8, ease }}
             className="block text-[11px] font-medium tracking-[0.3em] uppercase text-warm"
           >
-            Selected Projects
+            Featured Work
           </motion.span>
 
           <motion.h2
@@ -70,8 +70,8 @@ export default function Work() {
             transition={{ duration: 1, delay: 0.45, ease }}
             className="mt-6 max-w-md text-sm leading-[1.8] tracking-[0.02em] text-warm"
           >
-            Every project is a collaboration rooted in craft, curiosity, and an
-            obsession with the details that most overlook.
+            Tailored solutions, not templates. Each project is a precision
+            instrument, calibrated to its purpose.
           </motion.p>
         </div>
 
