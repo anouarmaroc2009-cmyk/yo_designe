@@ -84,9 +84,12 @@ export default function Footer() {
                 @yo_design_officiel
               </p>
             </Magnetic>
-            <p className="mt-4 text-sm tracking-[0.02em] text-white/30">
-              All over Morocco
-            </p>
+            <a
+              href="tel:+212671803785"
+              className="mt-4 block text-sm tracking-[0.02em] text-white/30 transition-colors hover:text-brass"
+            >
+              +212671803785
+            </a>
           </motion.div>
         </div>
 
