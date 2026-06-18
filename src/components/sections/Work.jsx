@@ -6,26 +6,11 @@ import SectionTransition from "../layout/SectionTransition";
 const ease = [0.16, 1, 0.3, 1];
 
 const projects = [
-  {
-    cols: "lg:col-span-7 lg:row-span-2",
-    src: "/pictures/cabinet.jpeg",
-    title: "Cabinet",
-  },
-  {
-    cols: "lg:col-span-5",
-    src: "/pictures/bureau moderne.jpeg",
-    title: "Bureau Moderne",
-  },
-  {
-    cols: "lg:col-span-5 lg:col-start-1",
-    src: "/pictures/bureau.jpeg",
-    title: "Bureau",
-  },
-  {
-    cols: "lg:col-span-7",
-    src: "/pictures/bureau vue d interieu.jpeg",
-    title: "Bureau Vue Intérieur",
-  },
+  { cols: "lg:col-span-7 lg:row-span-2", src: "/pictures/cabinet.jpeg" },
+  { cols: "lg:col-span-5", src: "/pictures/bureau moderne.jpeg" },
+  { cols: "lg:col-span-5 lg:col-start-1", src: "/pictures/bureau.jpeg" },
+  { cols: "lg:col-span-7", src: "/pictures/bureau vue d interieu.jpeg" },
+  { cols: "lg:col-span-12", src: "/pictures/WhatsApp Image 2026-06-18 at 07.44.34.jpeg" },
 ];
 
 export default function Work() {
