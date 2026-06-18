@@ -6,10 +6,26 @@ import SectionTransition from "../layout/SectionTransition";
 const ease = [0.16, 1, 0.3, 1];
 
 const projects = [
-  { cols: "lg:col-span-7 lg:row-span-2" },
-  { cols: "lg:col-span-5" },
-  { cols: "lg:col-span-5 lg:col-start-1" },
-  { cols: "lg:col-span-7" },
+  {
+    cols: "lg:col-span-7 lg:row-span-2",
+    src: "/pictures/cabinet.jpeg",
+    title: "Cabinet",
+  },
+  {
+    cols: "lg:col-span-5",
+    src: "/pictures/bureau moderne.jpeg",
+    title: "Bureau Moderne",
+  },
+  {
+    cols: "lg:col-span-5 lg:col-start-1",
+    src: "/pictures/bureau.jpeg",
+    title: "Bureau",
+  },
+  {
+    cols: "lg:col-span-7",
+    src: "/pictures/bureau vue d interieu.jpeg",
+    title: "Bureau Vue Intérieur",
+  },
 ];
 
 export default function Work() {
@@ -59,10 +75,12 @@ export default function Work() {
               className={`group relative col-span-12 block overflow-hidden rounded-sm ${p.cols}`}
             >
               <Magnetic strength={0.12}>
-                <a href="#" className="block">
-                  <div className="aspect-[5/4] w-full bg-stone lg:aspect-auto lg:h-full" />
+                <a href="#" className="block h-full">
+                  <div
+                    className="aspect-[5/4] w-full bg-stone bg-cover bg-center lg:aspect-auto lg:h-full"
+                    style={{ backgroundImage: `url(${p.src})` }}
+                  />
 
-                  {/* Glass overlay on hover */}
                   <div className="pointer-events-none absolute inset-0 opacity-0 transition-all duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100">
                     <div className="glass-dark absolute inset-0 rounded-sm" />
                   </div>
