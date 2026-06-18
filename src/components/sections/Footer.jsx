@@ -85,7 +85,7 @@ export default function Footer() {
               </p>
             </Magnetic>
             <p className="mt-4 text-sm tracking-[0.02em] text-white/30">
-              Casablanca / Paris / Remote
+              All over Morocco
             </p>
           </motion.div>
         </div>

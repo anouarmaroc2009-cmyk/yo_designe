@@ -77,7 +77,7 @@ export default function Hero() {
         transition={{ duration: 0.8, delay: 2.8, ease }}
         className="absolute bottom-10 right-8 text-[11px] font-medium tracking-[0.3em] uppercase text-warm/50 lg:right-20 xl:right-28"
       >
-        Casablanca / Paris
+        All over Morocco
       </motion.span>
     </header>
   );
