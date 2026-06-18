@@ -40,14 +40,7 @@ export default function Work() {
             Work that lingers.
           </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={labelInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, delay: 0.45, ease }}
-            className="mt-6 max-w-md text-sm leading-[1.8] tracking-[0.02em] text-warm"
-          >
-made by YourWebsite.Ma-anvar
-          </motion.p>
+
         </div>
 
         {/* Magazine-style asymmetric grid with parallax */}
