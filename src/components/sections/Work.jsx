@@ -7,34 +7,10 @@ import SectionTransition from "../layout/SectionTransition";
 const ease = [0.16, 1, 0.3, 1];
 
 const projects = [
-  {
-    title: "Maison Noire",
-    category: "Brand Architecture",
-    src: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=900&q=85",
-    cols: "lg:col-span-7 lg:row-span-2",
-    parallaxSpeed: 0.3,
-  },
-  {
-    title: "Atelier Loam",
-    category: "Visual Strategy",
-    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=85",
-    cols: "lg:col-span-5",
-    parallaxSpeed: 0.5,
-  },
-  {
-    title: "Kōri Studio",
-    category: "Environmental Narrative",
-    src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700&q=85",
-    cols: "lg:col-span-5 lg:col-start-1",
-    parallaxSpeed: 0.45,
-  },
-  {
-    title: "Sienna Estate",
-    category: "Content Ecosystem",
-    src: "https://images.unsplash.com/photo-1600585153490-76fb20a32601?w=700&q=85",
-    cols: "lg:col-span-7",
-    parallaxSpeed: 0.35,
-  },
+  { src: "/images/project-1.jpg", cols: "lg:col-span-7 lg:row-span-2", speed: 0.3 },
+  { src: "/images/project-2.jpg", cols: "lg:col-span-5", speed: 0.5 },
+  { src: "/images/project-3.jpg", cols: "lg:col-span-5 lg:col-start-1", speed: 0.45 },
+  { src: "/images/project-4.jpg", cols: "lg:col-span-7", speed: 0.35 },
 ];
 
 export default function Work() {
@@ -78,8 +54,8 @@ export default function Work() {
         {/* Magazine-style asymmetric grid with parallax */}
         <div className="grid gap-10 lg:grid-cols-12">
           {projects.map((p, i) => (
-            <SectionTransition
-              key={p.title}
+               <SectionTransition
+              key={i}
               delay={i * 0.1}
               className={`group relative col-span-12 block overflow-hidden rounded-sm ${p.cols}`}
             >
@@ -88,24 +64,15 @@ export default function Work() {
                   <div className="aspect-[5/4] w-full overflow-hidden lg:aspect-auto lg:h-full">
                     <ParallaxImage
                       src={p.src}
-                      alt={p.title}
-                      speed={p.parallaxSpeed}
+                      alt=""
+                      speed={p.speed}
                       className="h-full w-full transition-all duration-[1.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                     />
                   </div>
 
                   {/* Glass overlay on hover */}
-                  <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-8 opacity-0 transition-all duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100">
+                  <div className="pointer-events-none absolute inset-0 opacity-0 transition-all duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100">
                     <div className="glass-dark absolute inset-0 rounded-sm" />
-                    <div className="relative z-10">
-                      <span className="mb-2 inline-block h-px w-12 bg-brass" />
-                      <h3 className="font-serif text-3xl leading-tight text-white">
-                        {p.title}
-                      </h3>
-                      <p className="mt-1.5 text-[11px] tracking-[0.15em] uppercase text-white/60">
-                        {p.category}
-                      </p>
-                    </div>
                   </div>
                 </a>
               </Magnetic>
